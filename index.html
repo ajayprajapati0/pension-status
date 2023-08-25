@@ -8,7 +8,7 @@
   <style>
     body {
       font-family: Arial, sans-serif;
-      
+
       margin: 0;
       padding: 0;
       display: flex;
@@ -24,7 +24,7 @@
       justify-content: space-between;
       margin: 10px;
       padding: 20px;
-      background-color:aliceblue;
+      background-color: aliceblue;
       border-radius: 8px;
       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
     }
@@ -68,7 +68,6 @@
     button[type="submit"]:hover {
       background-color: #0056b3;
     }
-    
   </style>
 </head>
 
@@ -86,8 +85,8 @@
     <div class="form-container" id="widowdiv">
       <h1>WIDOW PENSION STATUS</h1>
       <form id="windowForm">
-        <label for="registrationNumber">Enter Registration Number:</label>
-        <input type="text" id="registrationNumber" required>
+        <label for="registrationNumberWidow">Enter Registration Number:</label>
+        <input type="text" id="registrationNumberWidow" required>
         <button type="submit">Get Details</button>
       </form>
     </div>
@@ -95,8 +94,8 @@
     <div class="form-container" id="handidiv">
       <h1>HANDICAPPED PENSION STATUS</h1>
       <form id="handiForm">
-        <label for="registrationNumber">Enter Registration Number:</label>
-        <input type="text" id="registrationNumber" required>
+        <label for="registrationNumberHandi">Enter Registration Number:</label>
+        <input type="text" id="registrationNumberHandi" required>
         <button type="submit">Get Details</button>
       </form>
     </div>
@@ -104,9 +103,8 @@
 
   <script>
     const form = document.getElementById('registrationForm');
-    const widow = document.getElementById('windowForm');
-    const handi = document.getElementById('handiForm');
-
+    const windowForm = document.getElementById('windowForm');
+    const handiForm = document.getElementById('handiForm');
 
     form.addEventListener('submit', function (event) {
       event.preventDefault();
@@ -114,44 +112,29 @@
       const baseUrl = "https://sspy-up.gov.in/oap/public/RegistrationFormPrint_New.aspx?Id=";
       const queryParams = "&d=3133&s=OldAgePension&tp=R&regps=";
       const generatedUrl = baseUrl + registrationNumber + queryParams + registrationNumber;
-
-      // Open the generated URL in a new tab
       window.open(generatedUrl, '_blank');
-      // reseting the value
       document.getElementById('registrationNumber').value = '';
     });
-    // for widow
-    widow.addEventListener('submit', function (event) {
+
+    windowForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      const registrationNumber = document.getElementById('registrationNumber').value;
+      const registrationNumber = document.getElementById('registrationNumberWidow').value;
       const baseUrl = "https://sspy-up.gov.in/oap/public/RegistrationFormPrint_New.aspx?Id=";
       const queryParams = "&d=3133&s=WidowPension&tp=R&regps=";
       const generatedUrl = baseUrl + registrationNumber + queryParams + registrationNumber;
-
-      // Open the generated URL in a new tab
       window.open(generatedUrl, '_blank');
-      // reseting the value
-      document.getElementById('registrationNumber').value = '';
+      document.getElementById('registrationNumberWidow').value = '';
     });
 
-
-    handi.addEventListener('submit', function (event) {
+    handiForm.addEventListener('submit', function (event) {
       event.preventDefault();
-      const registrationNumber = document.getElementById('registrationNumber').value;
+      const registrationNumber = document.getElementById('registrationNumberHandi').value;
       const baseUrl = "https://sspy-up.gov.in/oap/public/RegistrationFormPrint_New_Handicap.aspx?Id=";
       const queryParams = "&d=3133&s=HandicapPension&tp=R&regps=";
       const generatedUrl = baseUrl + registrationNumber + queryParams + registrationNumber;
-
-      // Open the generated URL in a new tab
       window.open(generatedUrl, '_blank');
-      // reseting the value
-      document.getElementById('registrationNumber').value = '';
+      document.getElementById('registrationNumberHandi').value = '';
     });
-
-
-
-
-
 
   </script>
 </body>
