@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pension Status</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      
+      margin: 0;
+      padding: 0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      background-color: antiquewhite;
+    }
+
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin: 10px;
+      padding: 20px;
+      background-color:aliceblue;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container {
+      flex-basis: calc(33.33% - 20px);
+      padding: 20px;
+      background-color: #fff;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin-bottom: 20px;
+    }
+
+    .form-container h1 {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 10px;
+      font-weight: bold;
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      margin-bottom: 20px;
+    }
+
+    button[type="submit"] {
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+    
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <div class="form-container" id="olddiv">
+      <h1>OLD AGE PENSION STATUS</h1>
+      <form id="registrationForm">
+        <label for="registrationNumber">Enter Registration Number:</label>
+        <input type="text" id="registrationNumber" required>
+        <button type="submit">Get Details</button>
+      </form>
+    </div>
+
+    <div class="form-container" id="widowdiv">
+      <h1>WIDOW PENSION STATUS</h1>
+      <form id="windowForm">
+        <label for="registrationNumber">Enter Registration Number:</label>
+        <input type="text" id="registrationNumber" required>
+        <button type="submit">Get Details</button>
+      </form>
+    </div>
+
+    <div class="form-container" id="handidiv">
+      <h1>HANDICAPPED PENSION STATUS</h1>
+      <form id="handiForm">
+        <label for="registrationNumber">Enter Registration Number:</label>
+        <input type="text" id="registrationNumber" required>
+        <button type="submit">Get Details</button>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const widow = document.getElementById('windowForm');
+    const handi = document.getElementById('handiForm');
+
+
+    form.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const registrationNumber = document.getElementById('registrationNumber').value;
+      const baseUrl = "https://sspy-up.gov.in/oap/public/RegistrationFormPrint_New.aspx?Id=";
+      const queryParams = "&d=3133&s=OldAgePension&tp=R&regps=";
+      const generatedUrl = baseUrl + registrationNumber + queryParams + registrationNumber;
+
+      // Open the generated URL in a new tab
+      window.open(generatedUrl, '_blank');
+      // reseting the value
+      document.getElementById('registrationNumber').value = '';
+    });
+    // for widow
+    widow.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const registrationNumber = document.getElementById('registrationNumber').value;
+      const baseUrl = "https://sspy-up.gov.in/oap/public/RegistrationFormPrint_New.aspx?Id=";
+      const queryParams = "&d=3133&s=WidowPension&tp=R&regps=";
+      const generatedUrl = baseUrl + registrationNumber + queryParams + registrationNumber;
+
+      // Open the generated URL in a new tab
+      window.open(generatedUrl, '_blank');
+      // reseting the value
+      document.getElementById('registrationNumber').value = '';
+    });
+
+
+    handi.addEventListener('submit', function (event) {
+      event.preventDefault();
+      const registrationNumber = document.getElementById('registrationNumber').value;
+      const baseUrl = "https://sspy-up.gov.in/oap/public/RegistrationFormPrint_New_Handicap.aspx?Id=";
+      const queryParams = "&d=3133&s=HandicapPension&tp=R&regps=";
+      const generatedUrl = baseUrl + registrationNumber + queryParams + registrationNumber;
+
+      // Open the generated URL in a new tab
+      window.open(generatedUrl, '_blank');
+      // reseting the value
+      document.getElementById('registrationNumber').value = '';
+    });
+
+
+
+
+
+
+  </script>
+</body>
+
+</html>
